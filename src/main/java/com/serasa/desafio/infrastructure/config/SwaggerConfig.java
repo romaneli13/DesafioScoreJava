@@ -21,10 +21,10 @@ public class SwaggerConfig {
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
-                .build().apiInfo(metaData());
+                .build().apiInfo(apiInfo());
     }
-
-    private ApiInfo metaData() {
+""
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Desafio Serasa REST API")
                 .description("API RESTful, para cadastro de pessoas com score e suas regiões de afinidades")
