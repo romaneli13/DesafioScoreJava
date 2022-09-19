@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class AfinidadeServiceImpl implements AfinidadeService {
     @Value("${propriedades.json.afinidadeListaFallback}")
     private String diretorioJsonFallback;
 
-    @Cacheable("afinidades")
+    @CacheEvict(value = "afinidades", allEntries = true)
     public List<Afinidade> salvar(CadastroAfinidadeRequestDTO cadastroAfinidadeRequestDTO) throws Exception {
         log.info("---------------------------");
         log.info("Cadastrar Afinidade: {}", cadastroAfinidadeRequestDTO);

@@ -9,10 +9,8 @@ import java.io.IOException;
 import java.util.List;
 
 public interface ScoreService {
-    @CacheEvict(value = "scores", allEntries = true)
     List<Score> salvar(CadastroScoreRequestDTO cadastroScoreRequestDTO) throws Exception;
 
-    @Cacheable("scores")
     List<Score> listar() throws Exception;
 
     List<Score> listaScoreDefault(Exception e) throws Exception;

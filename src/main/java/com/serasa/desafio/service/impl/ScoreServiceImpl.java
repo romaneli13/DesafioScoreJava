@@ -13,10 +13,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import springfox.documentation.annotations.Cacheable;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -40,6 +40,7 @@ public class ScoreServiceImpl implements ScoreService {
     @Value("${propriedades.json.scoreListaFallback}")
     private String diretorioJsonFallback;
 
+    @CacheEvict(value = "scores", allEntries = true)
     public List<Score> salvar(CadastroScoreRequestDTO cadastroScoreRequestDTO) throws Exception {
         log.info("---------------------------");
         log.info("Cadastro Score: {}", cadastroScoreRequestDTO);
@@ -66,7 +67,7 @@ public class ScoreServiceImpl implements ScoreService {
         log.error("Descrição não Encontrada para o Score: {}", scorePessoa);
         throw new CustomException(HttpStatus.CONFLICT, MessageFormat.format("Descrição não Encontrada para o Score: {0}", scorePessoa));
     }
-
+    @Cacheable("scores")
     @CircuitBreaker(name = "fallbackListaScore", fallbackMethod = "listaScoreDefault")
     public List<Score> listar() throws Exception {
         log.info("---------------------------");

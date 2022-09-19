@@ -23,3 +23,6 @@ propriedades:
   json:
     scoreListaFallback: "src/main/resources/scoreListaFallback.json"
     afinidadeListaFallback: "src/main/resources/afinidadeListaFallback.json"
+
+security:
+  - basicAuth: []
