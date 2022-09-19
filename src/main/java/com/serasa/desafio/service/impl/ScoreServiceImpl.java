@@ -58,7 +58,7 @@ public class ScoreServiceImpl implements ScoreService {
     public String filtrarDescricaoPorScore(Integer scorePessoa, List<Score> listaScore) throws Exception {
         log.info("---------------------------");
         log.info("Buscando Descrição para o Score: {}", scorePessoa);
-        Optional<Score> scoreOptional = Score.filtrarDescricao(listaScore, scorePessoa);
+        Optional<Score> scoreOptional = Score.filtrarDescricao(scorePessoa, listaScore);
         if (scoreOptional.isPresent()) {
             log.info("Descrição: '{}' para o Score: '{}'", scoreOptional.get().getDescricao(), scorePessoa);
             return scoreOptional.get().getDescricao();

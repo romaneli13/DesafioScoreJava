@@ -19,8 +19,8 @@ public class Score {
     @Column(name = "final")
     private Integer scoreFinal;
 
-    public static Optional<Score> filtrarDescricao(List<Score> scoreLista, Integer scorePessoa) {
-        return scoreLista.stream().filter(score -> (scorePessoa >= score.getScoreInicial()) && scorePessoa <= score.getScoreFinal()).findAny();
+    public static Optional<Score> filtrarDescricao(Integer scorePessoa, List<Score> listaScore) {
+        return listaScore.stream().filter(score -> (scorePessoa >= score.getScoreInicial()) && scorePessoa <= score.getScoreFinal()).findAny();
     }
 
 }
