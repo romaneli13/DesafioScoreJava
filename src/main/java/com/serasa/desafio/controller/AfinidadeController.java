@@ -1,7 +1,6 @@
 package com.serasa.desafio.controller;
 
 import com.serasa.desafio.models.dto.request.CadastroAfinidadeRequestDTO;
-import com.serasa.desafio.models.exception.CustomException;
 import com.serasa.desafio.service.AfinidadeService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
