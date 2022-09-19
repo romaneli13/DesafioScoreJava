@@ -1,0 +1,77 @@
+[
+  {
+    "id": 6,
+    "dataInclusao": {
+      "year": 2022,
+      "month": 9,
+      "day": 18
+    },
+    "nome": "Fulano de Tal",
+    "telefone": "1199999-9999",
+    "idade": 99,
+    "cidade": "Cidade de Fulano",
+    "estado": "SP",
+    "regiao": "sudeste",
+    "score": 1000
+  },
+  {
+    "id": 7,
+    "dataInclusao": {
+      "year": 2022,
+      "month": 9,
+      "day": 18
+    },
+    "nome": "Rodrigo",
+    "telefone": "1199999-9999",
+    "idade": 99,
+    "cidade": "Cidade de Fulano",
+    "estado": "SP",
+    "regiao": "sudeste",
+    "score": 1
+  },
+  {
+    "id": 8,
+    "dataInclusao": {
+      "year": 2022,
+      "month": 9,
+      "day": 18
+    },
+    "nome": "Gabriel",
+    "telefone": "1199999-9999",
+    "idade": 99,
+    "cidade": "Osasco",
+    "estado": "SP",
+    "regiao": "sudeste",
+    "score": 1
+  },
+  {
+    "id": 9,
+    "dataInclusao": {
+      "year": 2022,
+      "month": 9,
+      "day": 18
+    },
+    "nome": "Leonardo",
+    "telefone": "1199999-9999",
+    "idade": 99,
+    "cidade": "Osasco",
+    "estado": "SP",
+    "regiao": "sudeste",
+    "score": 544
+  },
+  {
+    "id": 10,
+    "dataInclusao": {
+      "year": 2022,
+      "month": 9,
+      "day": 18
+    },
+    "nome": "Diego",
+    "telefone": "1199999-9999",
+    "idade": 15,
+    "cidade": "Osasco",
+    "estado": "SP",
+    "regiao": "sudeste",
+    "score": 125
+  }
+]

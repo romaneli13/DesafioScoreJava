@@ -1,0 +1,86 @@
+[
+  {
+    "nome": "Fulano de Tal",
+    "cidade": "Cidade de Fulano",
+    "estado": "SP",
+    "scoreDescricao": "Recomendável",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Rodrigo",
+    "cidade": "Cidade de Fulano",
+    "estado": "SP",
+    "scoreDescricao": "Insuficiente",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Gabriel",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "scoreDescricao": "Insuficiente",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Leonardo",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "scoreDescricao": "Aceitável",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Diego",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "scoreDescricao": "Insuficiente",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Matheus",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "scoreDescricao": "Insuficiente",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "nome": "Matheus",
+    "cidade": "Osasco",
+    "estado": "SP",
+    "scoreDescricao": "Insuficiente",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  }
+]

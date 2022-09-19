@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "descricao": "Insuficiente",
+    "scoreInicial": 0,
+    "scoreFinal": 200
+  },
+  {
+    "id": 2,
+    "descricao": "Inaceitável",
+    "scoreInicial": 201,
+    "scoreFinal": 500
+  },
+  {
+    "id": 3,
+    "descricao": "Aceitável",
+    "scoreInicial": 501,
+    "scoreFinal": 700
+  },
+  {
+    "id": 4,
+    "descricao": "Recomendável",
+    "scoreInicial": 701,
+    "scoreFinal": 1000
+  }
+]

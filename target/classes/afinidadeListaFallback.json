@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "regiao": "sudeste",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  {
+    "id": 2,
+    "regiao": "sul",
+    "estados": [
+      "PR",
+      "SC",
+      "RS"
+    ]
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "nome": "Fulano de Tal",
+  "cidade": "Cidade de Fulano",
+  "estado": "SP",
+  "scoreDescricao": "Recomendável",
+  "estados": [
+    "SP",
+    "RJ",
+    "MG",
+    "ES"
+  ]
+}

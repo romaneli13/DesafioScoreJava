@@ -1,0 +1,25 @@
+spring:
+  security:
+    user:
+      name: testeSerasa
+      password: testeSerasa
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:h2:file:/data/demo
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+spring.jpa.show-sql: false
+spring.jpa.hibernate.ddl-auto: update
+
+spring.h2.console.enabled: false
+
+propriedades:
+  json:
+    scoreListaFallback: "src/main/resources/scoreListaFallback.json"
+    afinidadeListaFallback: "src/main/resources/afinidadeListaFallback.json"
