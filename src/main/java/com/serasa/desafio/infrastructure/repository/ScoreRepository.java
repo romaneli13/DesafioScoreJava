@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface ScoreRepository extends JpaRepository<Score, Long> {
+    public interface ScoreRepository extends JpaRepository<Score, Long> {
 
     Optional<Score> findByDescricaoIgnoreCase(String scoreDescricao);
 

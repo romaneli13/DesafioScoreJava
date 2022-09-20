@@ -1,77 +1,60 @@
 [
   {
-    "id": 6,
+    "id": 3,
     "dataInclusao": {
       "year": 2022,
       "month": 9,
-      "day": 18
+      "day": 20
     },
-    "nome": "Fulano de Tal",
+    "nome": "Fulano de tal",
     "telefone": "1199999-9999",
-    "idade": 99,
+    "idade": 18,
     "cidade": "Cidade de Fulano",
     "estado": "SP",
-    "regiao": "sudeste",
-    "score": 1000
+    "afinidade": {
+      "id": 2,
+      "regiao": "sudeste",
+      "estados": [
+        "SP",
+        "RJ",
+        "MG",
+        "ES"
+      ]
+    },
+    "score": {
+      "id": 1,
+      "descricao": "Insuficiente",
+      "scoreInicial": 0,
+      "scoreFinal": 1000
+    }
   },
   {
-    "id": 7,
+    "id": 3,
     "dataInclusao": {
       "year": 2022,
       "month": 9,
-      "day": 18
+      "day": 20
     },
-    "nome": "Rodrigo",
+    "nome": "Ciclano de tal",
     "telefone": "1199999-9999",
-    "idade": 99,
+    "idade": 25,
     "cidade": "Cidade de Fulano",
     "estado": "SP",
-    "regiao": "sudeste",
-    "score": 1
-  },
-  {
-    "id": 8,
-    "dataInclusao": {
-      "year": 2022,
-      "month": 9,
-      "day": 18
+    "afinidade": {
+      "id": 2,
+      "regiao": "sudeste",
+      "estados": [
+        "SP",
+        "RJ",
+        "MG",
+        "ES"
+      ]
     },
-    "nome": "Gabriel",
-    "telefone": "1199999-9999",
-    "idade": 99,
-    "cidade": "Osasco",
-    "estado": "SP",
-    "regiao": "sudeste",
-    "score": 1
-  },
-  {
-    "id": 9,
-    "dataInclusao": {
-      "year": 2022,
-      "month": 9,
-      "day": 18
-    },
-    "nome": "Leonardo",
-    "telefone": "1199999-9999",
-    "idade": 99,
-    "cidade": "Osasco",
-    "estado": "SP",
-    "regiao": "sudeste",
-    "score": 544
-  },
-  {
-    "id": 10,
-    "dataInclusao": {
-      "year": 2022,
-      "month": 9,
-      "day": 18
-    },
-    "nome": "Diego",
-    "telefone": "1199999-9999",
-    "idade": 15,
-    "cidade": "Osasco",
-    "estado": "SP",
-    "regiao": "sudeste",
-    "score": 125
+    "score": {
+      "id": 1,
+      "descricao": "Recomendável",
+      "scoreInicial": 0,
+      "scoreFinal": 1000
+    }
   }
 ]

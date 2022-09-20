@@ -1,9 +1,29 @@
 {
-  "nome": "Fulano de Tal",
+  "id": 3,
+  "dataInclusao": {
+    "year": 2022,
+    "month": 9,
+    "day": 20
+  },
+  "nome": "Fulano de tal",
   "telefone": "1199999-9999",
-  "idade": 99,
+  "idade": 18,
   "cidade": "Cidade de Fulano",
   "estado": "SP",
-  "score": 1000,
-  "regiao": "sudeste"
+  "afinidade": {
+    "id": 2,
+    "regiao": "sudeste",
+    "estados": [
+      "SP",
+      "RJ",
+      "MG",
+      "ES"
+    ]
+  },
+  "score": {
+    "id": 1,
+    "descricao": "Insuficiente",
+    "scoreInicial": 0,
+    "scoreFinal": 1000
+  }
 }

@@ -9,6 +9,7 @@ import com.serasa.desafio.models.dto.request.CadastroScoreRequestDTO;
 import com.serasa.desafio.models.dto.response.PessoaResponseDTO;
 import com.serasa.desafio.models.exception.CustomException;
 import com.serasa.desafio.service.AfinidadeService;
+import com.serasa.desafio.service.ScoreService;
 import com.serasa.desafio.service.impl.ScoreServiceImpl;
 import com.serasa.desafio.util.GeradorDeEntidades;
 import org.junit.jupiter.api.Assertions;
@@ -82,14 +83,14 @@ public class ScoreServiceTest {
 
     @Test
     public void testFiltrarDescricaoPorScoreRecomendavel() throws Exception {
-        String scoreDescricaoRecomendavel = scoreService.filtrarDescricaoPorScore(1000, scoreLista);
-        Assertions.assertEquals(scoreDescricaoRecomendavel, "Recomendável");
+        Score score = scoreService.filtrarDescricaoPorScore(1000, scoreLista);
+        Assertions.assertEquals(score.getDescricao(), "Recomendável");
     }
 
     @Test
     public void testFiltrarDescricaoPorScoreInsuficiente() throws Exception {
-        String scoreDescricaoInsuficiente = scoreService.filtrarDescricaoPorScore(0, scoreLista);
-        Assertions.assertEquals(scoreDescricaoInsuficiente, "Insuficiente");
+        Score score = scoreService.filtrarDescricaoPorScore(0, scoreLista);
+        Assertions.assertEquals(score.getDescricao(), "Insuficiente");
     }
 
     @Test
@@ -101,14 +102,14 @@ public class ScoreServiceTest {
 
     @Test
     public void testFiltrarDescricaoPorScoreInaceitavel() throws Exception {
-        String scoreDescricaoInaceitavel = scoreService.filtrarDescricaoPorScore(206, scoreLista);
-        Assertions.assertEquals(scoreDescricaoInaceitavel, "Inaceitável");
+        Score score = scoreService.filtrarDescricaoPorScore(206, scoreLista);
+        Assertions.assertEquals(score.getDescricao(), "Inaceitável");
     }
 
     @Test
     public void testFiltrarDescricaoPorScoreAceitavel() throws Exception {
-        String scoreDescricaoAceitavel = scoreService.filtrarDescricaoPorScore(501, scoreLista);
-        Assertions.assertEquals(scoreDescricaoAceitavel, "Aceitável");
+        Score score = scoreService.filtrarDescricaoPorScore(501, scoreLista);
+        Assertions.assertEquals(score.getDescricao(), "Aceitável");
     }
 
     @Test

@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,6 +48,8 @@ public class PessoaServiceImpl implements PessoaService {
             throw new CustomException(HttpStatus.CONFLICT, "Cadastro de Pessoa já existe.");
         }
         Pessoa pessoa = modelMapper.map(cadastroPessoaRequestDTO, Pessoa.class);
+        pessoa.setScore(scoreService.filtrarDescricaoPorScore(cadastroPessoaRequestDTO.getScore(), scoreService.listar()));
+        pessoa.setAfinidade(afinidadeService.filtrarEstadosPorRegiao(cadastroPessoaRequestDTO.getRegiao(), afinidadeService.listar()));
         Pessoa pessoaCadastrada = pessoaRepository.save(pessoa);
         log.info("Pessoa cadastrada com o id: {}", pessoaCadastrada);
         log.info("Cadastro Criado");
@@ -57,21 +58,16 @@ public class PessoaServiceImpl implements PessoaService {
     public Optional<PessoaResponseDTO> buscar(Long idPessoa) throws Exception {
         log.info("---------------------------");
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(idPessoa);
+        log.info("Teste {}", gson.toJsonTree(pessoaOptional.get()));
         log.info("Buscar Pessoa, id: {}", idPessoa);
         return pessoaOptional.map(pessoa ->
-        {
-            try {
-                return PessoaResponseDTO.builder()
+                PessoaResponseDTO.builder()
                         .nome(pessoa.getNome())
                         .estado(pessoa.getEstado())
                         .cidade(pessoa.getCidade())
-                        .scoreDescricao(scoreService.filtrarDescricaoPorScore(pessoaOptional.get().getScore(), scoreService.listar()))
-                        .estados(afinidadeService.filtrarEstadosPorRegiao(pessoa.getRegiao(), afinidadeService.listar()))
-                        .build();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
+                        .scoreDescricao(pessoa.getScore().getDescricao())
+                        .estados(pessoa.getAfinidade().getEstados())
+                        .build());
     }
 
     public Optional<List<PessoaResponseDTO>> listar() throws Exception {
@@ -83,21 +79,15 @@ public class PessoaServiceImpl implements PessoaService {
             return Optional.empty();
         } else {
             List<PessoaResponseDTO> pessoaResponseDTOLista = new ArrayList<>();
-            List<Score> scoreLista = scoreService.listar();
-            List<Afinidade> afinidadeLista = afinidadeService.listar();
             optionalPessoas.forEach(pessoa -> {
-                try {
-                    log.info("Pessoa: {}", pessoa);
-                    pessoaResponseDTOLista.add(PessoaResponseDTO.builder()
-                            .nome(pessoa.getNome())
-                            .estado(pessoa.getEstado())
-                            .cidade(pessoa.getCidade())
-                            .scoreDescricao(scoreService.filtrarDescricaoPorScore(pessoa.getScore(), scoreLista))
-                            .estados(afinidadeService.filtrarEstadosPorRegiao(pessoa.getRegiao(), afinidadeLista))
-                            .build());
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
+                log.info("Pessoa: {}", pessoa);
+                pessoaResponseDTOLista.add(PessoaResponseDTO.builder()
+                        .nome(pessoa.getNome())
+                        .estado(pessoa.getEstado())
+                        .cidade(pessoa.getCidade())
+                        .scoreDescricao(pessoa.getScore().getDescricao())
+                        .estados(pessoa.getAfinidade().getEstados())
+                        .build());
             });
             return Optional.of(pessoaResponseDTOLista);
         }

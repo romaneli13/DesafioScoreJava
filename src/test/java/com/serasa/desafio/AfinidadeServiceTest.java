@@ -88,32 +88,34 @@ public class AfinidadeServiceTest {
     @Test
     public void testeFiltrarEstadosPorRegiaoSudeste() throws Exception {
 
-        List<String> estadosLista = afinidadeService.filtrarEstadosPorRegiao("sudeste", afinidadeLista);
-        Assertions.assertEquals(estadosLista, afinidadeLista.get(0).getEstados());
+        Afinidade estadosLista = afinidadeService.filtrarEstadosPorRegiao("sudeste", afinidadeLista);
+        Assertions.assertEquals(estadosLista, afinidadeLista.get(0));
 
     }
 
     @Test
     public void testeFiltrarEstadosPorRegiaoSul() throws Exception {
 
-        List<String> estadosLista = afinidadeService.filtrarEstadosPorRegiao("sul", afinidadeLista);
-        Assertions.assertEquals(estadosLista, afinidadeLista.get(1).getEstados());
+        Afinidade estadosLista = afinidadeService.filtrarEstadosPorRegiao("sul", afinidadeLista);
+        Assertions.assertEquals(estadosLista, afinidadeLista.get(1));
 
     }
 
     @Test
     public void testeFiltrarEstadosPorRegiaoComListVazia() throws Exception {
 
-        List<String> estadosLista = afinidadeService.filtrarEstadosPorRegiao(pessoa.getRegiao(), new ArrayList<>());
-        Assertions.assertEquals(estadosLista, new ArrayList<>());
+        Assertions.assertThrows(CustomException.class, () -> {
+            afinidadeService.filtrarEstadosPorRegiao("sudeste", new ArrayList<>());
+        });
 
     }
 
     @Test
     public void testeFiltrarEstadosPorRegiaoComRegiaoNaoEncontrada() throws Exception {
 
-        List<String> estadosLista = afinidadeService.filtrarEstadosPorRegiao("regiaoquenaoexiste", afinidadeLista);
-        Assertions.assertEquals(estadosLista, new ArrayList<>());
+        Assertions.assertThrows(CustomException.class, () -> {
+            afinidadeService.filtrarEstadosPorRegiao("regiaoquenaoexiste", afinidadeLista);
+        });
 
     }
 

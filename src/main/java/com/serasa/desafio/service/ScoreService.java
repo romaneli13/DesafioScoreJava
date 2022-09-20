@@ -7,6 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface ScoreService {
     List<Score> salvar(CadastroScoreRequestDTO cadastroScoreRequestDTO) throws Exception;
@@ -15,6 +16,6 @@ public interface ScoreService {
 
     List<Score> listaScoreDefault(Exception e) throws Exception;
 
-    String filtrarDescricaoPorScore(Integer scorePessoa, List<Score> listaScore) throws Exception;
+    Score filtrarDescricaoPorScore(Integer scorePessoa, List<Score> listaScore) throws Exception;
 
 }

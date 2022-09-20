@@ -19,7 +19,11 @@ public class Pessoa {
     private Integer idade;
     private String cidade;
     private String estado;
-    private String regiao;
-    private Integer score;
+
+    @ManyToOne
+    private Afinidade afinidade;
+
+    @ManyToOne
+    private Score score;
 
 }

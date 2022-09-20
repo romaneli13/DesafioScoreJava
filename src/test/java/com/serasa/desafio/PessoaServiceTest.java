@@ -73,6 +73,11 @@ public class PessoaServiceTest {
 
     @Test
     public void testeSalvar() throws Exception {
+        when(modelMapper.map(cadastroPessoaRequestDTO, Pessoa.class)).thenReturn(pessoa);
+        when(scoreService.listar()).thenReturn(scoreLista);
+        when(scoreService.filtrarDescricaoPorScore(cadastroPessoaRequestDTO.getScore(), scoreLista)).thenReturn(scoreLista.get(0));
+        when(afinidadeService.listar()).thenReturn(afinidadeLista);
+        when(afinidadeService.filtrarEstadosPorRegiao(cadastroPessoaRequestDTO.getRegiao(), afinidadeLista)).thenReturn(afinidadeLista.get(0));
         pessoaService.salvar(cadastroPessoaRequestDTO);
         PessoaServiceImpl pessoaServiceVerify = mock(PessoaServiceImpl.class);
         pessoaServiceVerify.salvar(cadastroPessoaRequestDTO);
@@ -90,24 +95,18 @@ public class PessoaServiceTest {
     @Test
     public void testeBuscar() throws Exception {
         when(pessoaRepository.findById(pessoa.getId())).thenReturn(Optional.of(pessoa));
-        when(scoreService.listar()).thenReturn(scoreLista);
-        when(scoreService.filtrarDescricaoPorScore(pessoa.getScore(), scoreLista)).thenReturn("Recomendável");
-        when(afinidadeService.listar()).thenReturn(afinidadeLista);
-        when(afinidadeService.filtrarEstadosPorRegiao(pessoa.getRegiao(), afinidadeLista)).thenReturn(afinidadeLista.get(0).getEstados());
 
         Optional<PessoaResponseDTO> optionalPessoaResponseDTO = pessoaService.buscar(pessoa.getId());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().getEstados(), afinidadeLista.get(0).getEstados());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().getEstado(), pessoa.getEstado());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().getCidade(), pessoa.getCidade());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().getNome(), pessoa.getNome());
-        Assertions.assertEquals(optionalPessoaResponseDTO.get().getScoreDescricao(), "Recomendável");
+        Assertions.assertEquals(optionalPessoaResponseDTO.get().getScoreDescricao(), "Insuficiente");
     }
 
     @Test
     public void testeBuscarComErroAoFiltrarDescricaoPorScore() throws Exception {
-        when(pessoaRepository.findById(pessoa.getId())).thenReturn(Optional.of(pessoa));
-        when(scoreService.listar()).thenReturn(scoreLista);
-        when(scoreService.filtrarDescricaoPorScore(pessoa.getScore(), scoreLista)).thenThrow(NullPointerException.class);
+        when(pessoaRepository.findById(pessoa.getId())).thenThrow(NullPointerException.class);
 
         Assertions.assertThrows(Exception.class, () -> {
             pessoaService.buscar(pessoa.getId());
@@ -118,17 +117,13 @@ public class PessoaServiceTest {
     @Test
     public void testeListar() throws Exception {
         when(pessoaRepository.findAll()).thenReturn(pessoaLista);
-        when(scoreService.listar()).thenReturn(scoreLista);
-        when(scoreService.filtrarDescricaoPorScore(pessoa.getScore(), scoreLista)).thenReturn("Recomendável");
-        when(afinidadeService.listar()).thenReturn(afinidadeLista);
-        when(afinidadeService.filtrarEstadosPorRegiao(pessoa.getRegiao(), afinidadeLista)).thenReturn(afinidadeLista.get(0).getEstados());
 
         Optional<List<PessoaResponseDTO>> optionalPessoaResponseDTO = pessoaService.listar();
         Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getEstados(), afinidadeLista.get(0).getEstados());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getEstado(), pessoa.getEstado());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getCidade(), pessoa.getCidade());
         Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getNome(), pessoa.getNome());
-        Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getScoreDescricao(), "Recomendável");
+        Assertions.assertEquals(optionalPessoaResponseDTO.get().get(0).getScoreDescricao(), "Insuficiente");
     }
 
     @Test
@@ -141,9 +136,7 @@ public class PessoaServiceTest {
 
     @Test
     public void testeListarComErroAoFiltrarDescricaoPorScore() throws Exception {
-        when(pessoaRepository.findAll()).thenReturn(pessoaLista);
-        when(scoreService.listar()).thenReturn(scoreLista);
-        when(scoreService.filtrarDescricaoPorScore(pessoa.getScore(), scoreLista)).thenThrow(NullPointerException.class);
+        when(pessoaRepository.findAll()).thenThrow(NullPointerException.class);
 
         Assertions.assertThrows(Exception.class, () -> {
             pessoaService.listar();

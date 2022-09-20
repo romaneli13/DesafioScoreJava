@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,19 +54,21 @@ public class AfinidadeServiceImpl implements AfinidadeService {
 
     }
 
-    public List<String> filtrarEstadosPorRegiao(String regiao, List<Afinidade> listaAfinidades) throws Exception {
+    public Afinidade filtrarEstadosPorRegiao(String regiao, List<Afinidade> listaAfinidades) throws Exception {
         log.info("---------------------------");
         log.info("Filtrando Estados pela Regiao: {}", regiao);
         if (listaAfinidades.isEmpty()) {
             log.info("Lista de afinidades vazia");
-            return new ArrayList<>();
+            log.error("Lista de Afinidades Vazia");
+            throw new CustomException(HttpStatus.UNPROCESSABLE_ENTITY, "Lista de Afinidades Vazia");
         } else {
             Optional<Afinidade> afinidadeOptional = Afinidade.filtrarEstados(regiao, listaAfinidades);
             if (afinidadeOptional.isPresent()) {
                 log.info("Estados: {}", afinidadeOptional.get().getEstados());
-                return afinidadeOptional.get().getEstados();
+                return afinidadeOptional.get();
             } else {
-                return new ArrayList<>();
+                log.error("Afinidade não Encontrada para a regiao: {}", regiao);
+                throw new CustomException(HttpStatus.UNPROCESSABLE_ENTITY, MessageFormat.format("Afinidade não Encontrada para a regiao: {0}", regiao));
             }
         }
     }

@@ -11,7 +11,7 @@ import java.util.List;
 public interface AfinidadeService {
     List<Afinidade> salvar(CadastroAfinidadeRequestDTO cadastroAfinidadeRequestDTO) throws Exception;
     List<Afinidade> listar() throws Exception;
-    List<String> filtrarEstadosPorRegiao(String regiao, List<Afinidade> listaAfinidades) throws Exception;
+    Afinidade filtrarEstadosPorRegiao(String regiao, List<Afinidade> listaAfinidades) throws Exception;
 
 
 }
