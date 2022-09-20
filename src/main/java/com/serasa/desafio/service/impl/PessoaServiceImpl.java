@@ -58,7 +58,6 @@ public class PessoaServiceImpl implements PessoaService {
     public Optional<PessoaResponseDTO> buscar(Long idPessoa) throws Exception {
         log.info("---------------------------");
         Optional<Pessoa> pessoaOptional = pessoaRepository.findById(idPessoa);
-        log.info("Teste {}", gson.toJsonTree(pessoaOptional.get()));
         log.info("Buscar Pessoa, id: {}", idPessoa);
         return pessoaOptional.map(pessoa ->
                 PessoaResponseDTO.builder()
