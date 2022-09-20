@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 public class ApiError {
 
     private HttpStatus httpStatus;
-    private String errorMessage;
-    private String details;
+    private String erroMensagem;
+    private String erroDetalhes;
 
 }
