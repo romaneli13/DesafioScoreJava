@@ -3,6 +3,8 @@ package com.serasa.desafio.models.dto.request;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -18,8 +20,7 @@ public class CadastroPessoaRequestDTO {
     private String telefone;
 
     @ApiModelProperty(value = "Idade da pessoa", example = "18")
-    @NotBlank(message = "idade é obrigatório")
-    @Size(min = 1, message = "Idade minimina permita é 1")
+    @Min(message = "Idade minima permitida", value = 0)
     private Integer idade;
 
     @ApiModelProperty(value = "Cidade da pessoa", example = "Cidade de Fulano")
@@ -31,8 +32,7 @@ public class CadastroPessoaRequestDTO {
     private String estado;
 
     @ApiModelProperty(value = "Score da pessoa", example = "545")
-    @NotBlank(message = "score é obrigatório")
-    @Size(max = 1000, message = "Score Máximo 1000, Minimo 0")
+    @Max(message = "Minimo 0 - Maximo 1000", value = 1000)
     private Integer score;
 
     @ApiModelProperty(value = "Regiao da pessoa", example = "sudeste")

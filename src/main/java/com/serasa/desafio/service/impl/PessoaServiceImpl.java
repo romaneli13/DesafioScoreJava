@@ -49,7 +49,8 @@ public class PessoaServiceImpl implements PessoaService {
             throw new CustomException(HttpStatus.CONFLICT, "Cadastro de Pessoa já existe.");
         }
         Pessoa pessoa = modelMapper.map(cadastroPessoaRequestDTO, Pessoa.class);
-        pessoaRepository.save(pessoa);
+        Pessoa pessoaCadastrada = pessoaRepository.save(pessoa);
+        log.info("Pessoa cadastrada com o id: {}", pessoaCadastrada);
         log.info("Cadastro Criado");
     }
 
@@ -86,6 +87,7 @@ public class PessoaServiceImpl implements PessoaService {
             List<Afinidade> afinidadeLista = afinidadeService.listar();
             optionalPessoas.forEach(pessoa -> {
                 try {
+                    log.info("Pessoa: {}", pessoa);
                     pessoaResponseDTOLista.add(PessoaResponseDTO.builder()
                             .nome(pessoa.getNome())
                             .estado(pessoa.getEstado())

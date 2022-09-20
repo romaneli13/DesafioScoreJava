@@ -42,6 +42,12 @@ Instale as dependências
   mvn clean install
 ```
 
+Inicie o projeto
+
+```bash
+  mvn spring-boot:run
+```
+
 ## Variáveis de Ambiente
 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
@@ -58,6 +64,7 @@ Para rodar os testes, rode o seguinte comando
 ```bash
   mvn test
 ```
+
 
 Testes executados
 
