@@ -19,6 +19,10 @@ spring.jpa.hibernate.ddl-auto: update
 
 spring.h2.console.enabled: true
 
+server:
+  servlet:
+    context-path: /desafio-serasa
+
 propriedades:
   json:
     scoreListaFallback: "src/main/resources/scoreListaFallback.json"
