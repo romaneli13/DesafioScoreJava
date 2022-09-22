@@ -19,7 +19,7 @@ API RESTful, para cadastro de pessoas com score e suas regiões de afinidades
 #### Swagger
 
 ```http
-  http://localhost:8080/swagger-ui.html
+  http://localhost:8080/desafio-serasa/swagger-ui.html
 ```
 
 ## Rodando localmente
